@@ -202,7 +202,11 @@ namespace Talent.Services.Listing.Controllers
                 {
                     var returnJobs = sortedJobs.OrderByDescending(x => x.CreatedOn).Skip((activePage - 1) * limit).Take(limit)
                         .Select(x => new { x.Id, x.Title, x.Summary, x.JobDetails.Location, x.ExpiryDate, x.Status, noOfSuggestions = x.TalentSuggestions != null && x.TalentSuggestions.Count != 0 ? x.TalentSuggestions.Count : 0 });
+                    //.Select(x => new { x.Id, x.Title, x.Summary, x.JobDetails.Location, x.ExpiryDate, x.Status, noOfSuggestions = x.TalentSuggestions != null && x.TalentSuggestions.Count != 0 ? x.TalentSuggestions.Count : 0, x.Title });
+
                     return Json(new { Success = true, MyJobs = returnJobs, TotalCount = sortedJobs.Count() });
+
+
                 }
 
                 else
